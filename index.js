@@ -22,10 +22,32 @@ function addTask(taskText) {
     const item = document.createElement('div');
     item.classList = 'item';
     item.innerHTML = `<li>${taskText}</li>
-    <div>
         <button class="edit"><i class="fas fa-pen"></i></button>
         <button class="completed"><i class="fas fa-check"></i></button>
         <button class="delete"><i class="fas fa-trash-can"></i></button>
-    </div>`
+    `
     task_list.appendChild(item)
+}
+
+//get all event for editable task
+task_list.addEventListener('click', function (e) {
+    if (e.target.classList == 'delete') {
+        removeList(e);
+    }
+    else if (e.target.classList == 'completed') {
+        completeList(e)
+    }
+    else if (e.target.classList == 'edit') {
+        editList(e);
+    }
+})
+
+//delete list
+function removeList(event){
+    event.target.parentElement.remove();
+}
+//complete task
+function completeList(event){
+    const completeList= event.target.parentElement.firstElementChild;
+    completeList.classList.toggle('completed_task')
 }

@@ -60,6 +60,7 @@ p{
     flex-grow: 1;
     text-align: left;
     list-style: none;
+    transition: .5s;
 }
 ul.task_list button {
     height: 40px;
@@ -69,4 +70,11 @@ ul.task_list button {
     background: #54072f;
     border-radius: 5px;
     color: #fff;
+}
+ul.task_list button i{
+    pointer-events: none;
+}
+.completed_task{
+    background: #203239;
+    padding: 10px 15px;
 }
