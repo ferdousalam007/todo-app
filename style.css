@@ -71,6 +71,7 @@ ul.task_list button {
     background: #54072f;
     border-radius: 5px;
     color: #fff;
+    cursor: pointer;
 }
 ul.task_list button i{
     pointer-events: none;

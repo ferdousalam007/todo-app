@@ -64,7 +64,7 @@ addNewBtn.addEventListener('click', function (e) {
     const div = document.createElement("div");
     div.classList.add("item");
 
-    div.innerHTML = `<li data-tag="${uniqueValue}">${inputValue}</li>
+    div.innerHTML = `<li data-tag = ${uniqueValue}>${inputValue}</li>
                     <button class="edit"><i class="fas fa-pen"></i></button>
                     <button class="completed"><i class="fas fa-check"></i></button>
                     <button class="delete"><i class="fas fa-trash-can"></i></button>
@@ -109,3 +109,16 @@ function deleteItem(event) {
 }
 
 //05 edit task
+function editItem(event) {
+    const li = event.target.parentElement.firstElementChild;
+    const previousTask = li.dataset.tag;
+    console.log(previousTask);
+    const input = document.createElement('ínput');
+    input.type = 'text';
+    input.value = previousTask;
+    li.innerHTML = "";
+    li.appendChild(input);
+
+
+
+}
