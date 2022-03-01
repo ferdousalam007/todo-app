@@ -46,6 +46,7 @@ p{
     color: #ffffff;
     background: #54072f;
     border: none;
+    cursor: pointer;
 }
 .item {
     display: flex;
