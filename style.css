@@ -80,3 +80,11 @@ ul.task_list button i{
     background: #203239;
     padding: 10px 15px;
 }
+li input {
+    width: 80%;
+    height: 40px;
+    font-size: 16px;
+    color: #f8e3ee;
+    background: #ff57226b;
+    border: none;
+}

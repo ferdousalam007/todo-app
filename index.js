@@ -36,7 +36,7 @@ function showUitasks(tasks) {
         if (status == 'completed') {
             completed = 'completed_task';
         }
-        div.innerHTML = `<li class=${completed} data-tag=${task[0]}>${task[0]}</li>
+        div.innerHTML =`<li data-tag=${task[0]}  class=${completed}>${task[0]}</li>
                     <button class="edit"><i class="fas fa-pen"></i></button>
                     <button class="completed"><i class="fas fa-check"></i></button>
                     <button class="delete"><i class="fas fa-trash-can"></i></button>
@@ -64,7 +64,7 @@ addNewBtn.addEventListener('click', function (e) {
     const div = document.createElement("div");
     div.classList.add("item");
 
-    div.innerHTML =`<li data-tag = ${uniqueValue}>${inputValue}</li>
+    div.innerHTML =`<li data-tag=${uniqueValue}>${inputValue}</li>
                     <button class="edit"><i class="fas fa-pen"></i></button>
                     <button class="completed"><i class="fas fa-check"></i></button>
                     <button class="delete"><i class="fas fa-trash-can"></i></button>
@@ -119,7 +119,26 @@ function editItem(event) {
     console.log(input);
     li.innerHTML = "";
     li.appendChild(input);
-
-
+    input.addEventListener('keypress',function(e){
+        if(e.key=="Enter"){
+            const editTaskText = this.value;
+            li.innerHTML=editTaskText;
+            li.dataset.tag=editTaskText;
+            event.target.style.display='inline'
+            const tasks =loadTask();
+            let index;
+            let modifiedtask;
+            tasks.forEach((task,i)=>{
+                if(task[0]==previousTask){
+                    index=i;
+                    modifiedtask=tasks[i]
+                }
+            })
+            modifiedtask[0]=editTaskText;
+            tasks.splice(index,1,modifiedtask);
+            setDataLocalStorage(tasks)
+        }
+    })
+    event.target.style.display='none';
 
 }
